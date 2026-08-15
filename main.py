@@ -38,9 +38,9 @@ if liczba < 10:
 
         # Gotowa wiadomosc do klienta
         print("\n--- GOTOWA WIADOMOSC DO WYSLANIA ---")
-        print("Hej! Nam dla Ciebie propozycje 😊")
+        print("Hej! Mam dla Ciebie propozycje 😊")
         print("Przyprowadz znajomego na tatuaz, a oboje dostajecie 10% znizki!")
-        print("Wystarczy, ze wspomnisz o mnie lub pokazesz ten pst.")
+        print("Wystarczy, ze wspomnisz o mnie lub pokazesz ten post.")
         print("Daj znac jesli masz kogos zainteresowanego!")
         print("-------------------------------------")
 
