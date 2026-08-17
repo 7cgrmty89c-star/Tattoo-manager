@@ -3,8 +3,7 @@
 print("=== TATTOO MANAGER ===")
 print("witaj w programie")
 
-klienci = input("ilu klientow miales w tym miesiacu: ")
-liczba = int(klienci)
+liczba = int(input("ilu klientow miales w tym miesiacu: "))
 
 if liczba < 10:
 
