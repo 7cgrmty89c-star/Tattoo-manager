@@ -3,12 +3,16 @@
 print("=== TATTOO MANAGER ===")
 print("witaj w programie")
 
-liczba = int(input("ilu klientow miales w tym miesiacu: "))
-
-# Walidacja - liczba klientow nie moze byc ujemna
-while liczba < 0:
-    print("⚠️ Liczba klientow nie moze byc ujemna. Sprobuj ponownie.")
-    liczba = int(input("ilu klientow miales w tym miesiacu: "))
+# Walidacja - musi byc liczba i nie moze byc ujemna
+while True:
+    try:
+        liczba = int(input("ilu klientow miales w tym miesiacu: "))
+        if liczba < 0:
+            print("⚠️ Liczba klientow nie moze byc ujemna. Sprobuj ponownie.")
+            continue
+        break
+    except ValueError:
+        print("⚠️ To nie jest liczba. Sprobuj ponownie.")
 
 # Zapis do pliku - zeby program "pamietal" dane miedzy uruchomieniami
 plik = open("historia.txt", "a")
@@ -66,9 +70,16 @@ if liczba < 10:
         for linia in wiadomosc:
             print(linia)
 
-        # Symulacja liczenia polecen
-        polecenia = input("\nIlu klientow w tym miesiacu przyszlo z polecenia? ")
-        polecenia = int(polecenia)
+        # Symulacja liczenia polecen (z walidacja)
+        while True:
+            try:
+                polecenia = int(input("\nIlu klientow w tym miesiacu przyszlo z polecenia? "))
+                if polecenia < 0:
+                    print("⚠️ Liczba polecen nie moze byc ujemna. Sprobuj ponownie.")
+                    continue
+                break
+            except ValueError:
+                print("⚠️ To nie jest liczba. Sprobuj ponownie.")
 
         # Zapis polecen do tego samego pliku historii
         plik = open("historia.txt", "a")
