@@ -5,7 +5,12 @@ print("witaj w programie")
 
 liczba = int(input("ilu klientow miales w tym miesiacu: "))
 
-# Zapis do pliku - zeby pamietal dane miedzy uruchomieniami
+# Walidacja - liczba klientow nie moze byc ujemna
+while liczba < 0:
+    print("⚠️ Liczba klientow nie moze byc ujemna. Sprobuj ponownie.")
+    liczba = int(input("ilu klientow miales w tym miesiacu: "))
+
+# Zapis do pliku - zeby program "pamietal" dane miedzy uruchomieniami
 plik = open("historia.txt", "a")
 plik.write(f"Liczba klientow: {liczba}\n")
 plik.close()
