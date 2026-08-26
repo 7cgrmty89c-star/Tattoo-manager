@@ -117,3 +117,21 @@ else:
     print("- oferowaniu kolejnych terminow stalym klientom")
 
 print("\nPowodzenia w biznesie! 🎨")
+# Statystyka - srednia liczba klientow z historii
+suma_klientow = 0
+ilosc_wpisow = 0
+
+plik = open("historia.txt", "r")
+for linia in plik:
+    if "Liczba klientow:" in linia:
+        czesci = linia.split(":")
+        wartosc = int(czesci[1].strip())
+        suma_klientow = suma_klientow + wartosc
+        ilosc_wpisow = ilosc_wpisow + 1
+plik.close()
+
+if ilosc_wpisow > 0:
+    srednia = suma_klientow / ilosc_wpisow
+    print(f"\n📊 Srednia liczba klientow z {ilosc_wpisow} miesiecy: {srednia:.1f}")
+else:
+    print("\n📊 Brak danych do obliczenia sredniej.")
