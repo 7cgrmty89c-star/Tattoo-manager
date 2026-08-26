@@ -1,5 +1,16 @@
 # asystent analizujacy profil tatuazysty i podpowiadajacy jak zdobywc klientow
+import random
 
+porady_dnia = [
+    "Odpowiadaj na wiadomosci klientow w ciagu 24h - to buduje zaufanie.",
+    "Rob zdjecia gotowych tatuazy w dobrym swietle, to Twoja najlepsza reklama.",
+    "Zapytaj stalych klientow o opinie - to za darmo, a dziala lepiej niz reklama.",
+    "Pokazuj proces pracy w Stories - ludzie uwielbiaja 'kulisy'.",
+    "Nie badz za tani - niska cena przyciaga klientow, ktorzy nie doceniaja jakosci."
+]
+
+porada = random.choice(porady_dnia)
+print(f"\n💡 PORADA DNIA: {porada}")
 print("=== TATTOO MANAGER ===")
 print("witaj w programie")
 
@@ -117,21 +128,3 @@ else:
     print("- oferowaniu kolejnych terminow stalym klientom")
 
 print("\nPowodzenia w biznesie! 🎨")
-# Statystyka - srednia liczba klientow z historii
-suma_klientow = 0
-ilosc_wpisow = 0
-
-plik = open("historia.txt", "r")
-for linia in plik:
-    if "Liczba klientow:" in linia:
-        czesci = linia.split(":")
-        wartosc = int(czesci[1].strip())
-        suma_klientow = suma_klientow + wartosc
-        ilosc_wpisow = ilosc_wpisow + 1
-plik.close()
-
-if ilosc_wpisow > 0:
-    srednia = suma_klientow / ilosc_wpisow
-    print(f"\n📊 Srednia liczba klientow z {ilosc_wpisow} miesiecy: {srednia:.1f}")
-else:
-    print("\n📊 Brak danych do obliczenia sredniej.")
