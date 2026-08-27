@@ -50,7 +50,12 @@ if liczba < 10:
     print("2 - Instagram Push (7 dni postow)")
     print("3 - Program Polecen (znizka za znajomego)")
 
+while True:
     wybor = input("\nWybierz 1, 2 lub 3: ")
+    if wybor == "1" or wybor == "2" or wybor == "3":
+        break
+    else:
+        print("⚠️ Nieprawidlowy wybor. Wpisz 1, 2 lub 3.")
 
     if wybor == "1":
         print("\n⚡ FLASH DAY - kroki:")
@@ -116,9 +121,6 @@ if liczba < 10:
         else:
             print("\n💡 Wskazowka: Wyslij powyzsza wiadomosc do 3 ostatnich klientow.")
             print("Program polecen to najtansza i najskuteczniejsza kampania.")
-
-    else:
-        print("Nieprawidlowy wybor. Sprobuj ponownie.")
 
 else:
     print("\n✅ Brawo! Masz wystarczajaco klientow.")
