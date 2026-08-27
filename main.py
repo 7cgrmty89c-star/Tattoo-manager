@@ -15,17 +15,19 @@ print("=== TATTOO MANAGER ===")
 print("witaj w programie")
 
 # Pokaz historie poprzednich miesiecy (jesli plik juz istnieje)
-print("\n📜 HISTORIA POPRZEDNICH WPISOW:")
-try:
-    plik = open("historia.txt", "r")
-    zawartosc = plik.read()
-    plik.close()
-    if zawartosc == "":
+def pokaz_historie():
+    print("\n📁 HISTORIA POPRZEDNICH WPISOW:")
+    try:
+        plik = open("historia.txt", "r")
+        zawartosc = plik.read()
+        plik.close()
+        if zawartosc == "":
+            print("(brak wpisow - to Twoje pierwsze uruchomienie)")
+        else:
+            print(zawartosc)
+    except FileNotFoundError:
         print("(brak wpisow - to Twoje pierwsze uruchomienie)")
-    else:
-        print(zawartosc)
-except FileNotFoundError:
-    print("(brak wpisow - to Twoje pierwsze uruchomienie)")
+pokaz_historie()
 
 # Walidacja - musi byc liczba i nie moze byc ujemna
 while True:
