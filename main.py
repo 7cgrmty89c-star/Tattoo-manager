@@ -1,6 +1,10 @@
 # asystent analizujacy profil tatuazysty i podpowiadajacy jak zdobywc klientow
 import random
 
+def pokaz_porade():
+    porada = random.choice(porady_dnia)
+    print(f"\n💡 PORADA DNIA: {porada}")
+
 porady_dnia = [
     "Odpowiadaj na wiadomosci klientow w ciagu 24h - to buduje zaufanie.",
     "Rob zdjecia gotowych tatuazy w dobrym swietle, to Twoja najlepsza reklama.",
@@ -9,17 +13,16 @@ porady_dnia = [
     "Nie badz za tani - niska cena przyciaga klientow, ktorzy nie doceniaja jakosci."
 ]
 
-porada = random.choice(porady_dnia)
-print(f"\n💡 PORADA DNIA: {porada}")
+pokaz_porade()
+
 print("=== TATTOO MANAGER ===")
 print("witaj w programie")
-
 # Pokaz historie poprzednich miesiecy (jesli plik juz istnieje)
 def pokaz_historie():
     print("\n📁 HISTORIA POPRZEDNICH WPISOW:")
     try:
         plik = open("historia.txt", "r")
-        zawartosc = plik.read()
+        zawartosc = plik.read()	
         plik.close()
         if zawartosc == "":
             print("(brak wpisow - to Twoje pierwsze uruchomienie)")
