@@ -2,6 +2,7 @@
 import random
 # ----funkcje----
 def pokaz_porade():
+    """Losuje i wyswietla jedna porade dnia."""
     porada = random.choice(porady_dnia)
     print(f"\n💡 PORADA DNIA: {porada}")
 # ----dane----
@@ -13,6 +14,7 @@ porady_dnia = [
     "Nie badz za tani - niska cena przyciaga klientow, ktorzy nie doceniaja jakosci."]
 
 def pokaz_historie():
+    """Wczytuje i wyswietla zawartosc pliku historia.txt, jesli istnieje."""
     print("\n📂 HISTORIA POPRZEDNICH WPISOW:")
     try:
         plik = open("historia.txt", "r")
@@ -25,7 +27,26 @@ def pokaz_historie():
     except FileNotFoundError:
         print("(brak wpisow - to Twoje pierwsze uruchomienie)")
 
+def zbierz_dane_klienta():
+    """Pyta o liczbe klientow w miesiacu, waliduje i zapisuje do historia.txt."""
+    while True:
+        try:
+            liczba = int(input("ilu klientow miales w tym miesiacu?"))
+            if liczba < 0:
+                print("⚠️ Liczba klientow nie moze byc ujemna. Sprobuj ponownie.")
+                continue
+            break
+        except ValueError:
+            print("⚠️ To nie jest liczba. Sprobuj ponownie.")
+
+    plik = open("historia.txt", "a")
+    plik.write(f"Liczba klientow: {liczba}\n")
+    plik.close()
+
+    return liczba
+
 def program_polecen():
+    """Pokazuje zasady polecen, gotowa wiadomosc do klienta oraz zbiera i zapisuje liczbe polecen."""
     print("\n🤝 PROGRAM POLECEN")
     print("\nZasady: Klient przyprowadza znajomego = oboje dostaja 10% znizki.")
     print("\n--- GOTOWA WIADOMOSC DO WYSLANIA ---")
@@ -61,6 +82,7 @@ def program_polecen():
         print("Program polecen to najtansza i najskuteczniejsza kampania.")
 
 def flash_day():
+    """Wyswietla liste krokow do zorganizowania Flash Day."""
     print("\n⚡ FLASH DAY - kroki:")
     kroki = [
         "1. Przygotuj 3-5 malych wzorow (max 1h)",
@@ -73,6 +95,7 @@ def flash_day():
         print(krok)
 
 def instagram_push():
+    """Wyswietla 7-dniowy plan postow na Instagram."""
     print("\n📱 INSTAGRAM PUSH - plan 7 dni:")
     dni = [
         "Dzien 1: Post before/after + pytanie w opisie",
@@ -87,6 +110,7 @@ def instagram_push():
         print(dzien)
 
 def gratulacje():
+    """Wyswietla gratulacje i przypomnienia dla osob z wystarczajaca liczba klientow."""
     print("\n✅ Brawo! Masz wystarczajaco klientow.")
     print("Pamietaj o:")
     print("- proszeniu o opinie")
@@ -98,24 +122,10 @@ pokaz_porade()
 
 print("=== TATTOO MANAGER ===")
 print("witaj w programie")
-# Pokaz historie poprzednich miesiecy (jesli plik juz istnieje)
+
 pokaz_historie()
 
-# Walidacja - musi byc liczba i nie moze byc ujemna
-while True:
-    try:
-        liczba = int(input("ilu klientow miales w tym miesiacu?"))
-        if liczba < 0:
-            print("⚠️ Liczba klientow nie moze byc ujemna. Sprobuj ponownie.")
-            continue
-        break
-    except ValueError:
-        print("⚠️ To nie jest liczba. Sprobuj ponownie.")
-
-# Zapis do pliku - zeby program "pamietal" dane miedzy uruchomieniami
-plik = open("historia.txt", "a")
-plik.write(f"Liczba klientow: {liczba}\n")
-plik.close()
+liczba = zbierz_dane_klienta()
 
 if liczba < 10:
 
